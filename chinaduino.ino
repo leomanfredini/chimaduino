@@ -38,6 +38,8 @@ void setup(void)
 	Serial.println();
 	Serial.println();
 	lcd.begin(16, 2);
+	//OPCIONAL
+	//Define o pino 2 para alimentação da luz de fundo do LCD (pino 15 do LCD)
 	pinMode(2, OUTPUT);
 	digitalWrite(2, HIGH);
    
@@ -61,11 +63,7 @@ void loop()
 
 	// Mostra dados no serial monitor
 	Serial.print("Temp C: ");
-	Serial.print(tempC);
-	Serial.print(" Min : ");
-	Serial.print(tempMin);
-	Serial.print(" Max : ");
-	Serial.println(tempMax);
+	Serial.println(tempC);
 
 	// Mostra dados no LCD  
 	lcd.clear();
@@ -96,6 +94,7 @@ void loop()
 	} else if ((tempC >= 70) && (tempC < 76)){
 		lcd.setCursor(0,1);
 		lcd.print("BAGUAL P/ CHIMA");
+		//Pisca a luz de fundo do display LCD
 		digitalWrite(2, LOW);
 		delay(200);
 		digitalWrite(2, HIGH);
